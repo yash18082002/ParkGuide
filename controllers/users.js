@@ -25,7 +25,7 @@ module.exports.signUp = async (req, res, next) => {
 }
 
 module.exports.renderSignIn = (req, res) => {
-    res.render('users/login', { page: 0 });
+    res.render('users/login', { page: "sin" });
 }
 
 module.exports.signIn = (req, res) => {

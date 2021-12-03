@@ -27,7 +27,7 @@ const userRoutes = require('./routes/users');
 const store = new MongoDBStore({
     mongoUrl: dbUrl,
     secret,
-    ttl: 24 * 60 * 60,
+    ttl: 24 * 60 * 60 * 14,
 });
 
 store.on('error', function (e) {
