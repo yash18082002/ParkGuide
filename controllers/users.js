@@ -37,6 +37,6 @@ module.exports.signIn = (req, res) => {
 
 module.exports.signOut = (req, res) => {
     req.logout();
-    req.flash('success', 'Successfully logged out!');
-    res.redirect('/parks');
+    req.flash('error', 'Sorry to see you go :(');
+    res.redirect('/');
 }
