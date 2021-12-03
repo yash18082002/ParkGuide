@@ -25,9 +25,9 @@ const reviewRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
 
 const store = new MongoDBStore({
-    url: dbUrl,
+    mongoUrl: dbUrl,
     secret,
-    touchAfter: 24 * 60 * 60
+    ttl: 24 * 60 * 60,
 });
 
 store.on('error', function (e) {
