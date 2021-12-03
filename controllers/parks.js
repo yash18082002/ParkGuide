@@ -19,7 +19,7 @@ module.exports.createPark = async (req, res) => {
     park.author = req.user._id;
     await park.save();
     req.flash('success', 'Park added successfully!');
-    res.redirect(`/parks/${park._id}`, { page: 0 });
+    res.redirect(`/parks/${park._id}`);
 }
 
 module.exports.renderNew = (req, res) => {
@@ -54,7 +54,7 @@ module.exports.editPark = async (req, res) => {
     }
     await park.save();
     req.flash('success', 'Park edited successfully!');
-    res.redirect(`/parks/${park._id}`, { page: 0 });
+    res.redirect(`/parks/${park._id}`);
 }
 
 module.exports.renderEdit = async (req, res) => {

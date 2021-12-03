@@ -20,7 +20,7 @@ module.exports.signUp = async (req, res, next) => {
         })
     } catch (e) {
         req.flash('error', e.message);
-        res.redirect('/register', { page: 0 });
+        res.redirect('/register');
     }
 }
 
