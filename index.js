@@ -16,7 +16,7 @@ const passport = require('passport');
 const passportLocal = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
-const MongoDBStore = require('connect-mongo')(session);
+const MongoDBStore = require('connect-mongo');
 const dbUrl = process.env.DB_URL;
 const  secret = process.env.SECRET;
 
