@@ -18,14 +18,15 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const MongoDBStore = require('connect-mongo')(session);
 const dbUrl = process.env.DB_URL;
+const  secret = process.env.SECRET;
 
 const parkRoutes = require('./routes/parks');
 const reviewRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
 
 const store = new MongoDBStore({
-    url: 'mongodb://localhost:27017/park-guide',
-    secret: 'Skullbashed18',
+    url: dbUrl,
+    secret,
     touchAfter: 24 * 60 * 60
 });
 
@@ -36,7 +37,7 @@ store.on('error', function (e) {
 const sessionConfigs = {
     store,
     name: 'cchip',
-    secret: 'Skullbashed18',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -63,8 +64,8 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 })
-
-mongoose.connect('mongodb://localhost:27017/park-guide', {
+// 'mongodb://localhost:27017/park-guide'
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     /*useCreateIndex: true,*/
     useUnifiedTopology: true,
@@ -99,6 +100,8 @@ app.use((err, req, res, next) => {
     if (!err.message) err.message = 'Oh no! Something went wrong!!';
     res.status(statusCode).render('error', { err });
 })
-app.listen(1808, () => {
+
+const port = process.env.PORT || 1808;
+app.listen(port, () => {
     console.log('Listening on port 1808');
 })
