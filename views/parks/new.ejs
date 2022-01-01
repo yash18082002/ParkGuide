@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">    
+<h1 class="text-center">Add a new park!</h1>
+<div class="col-6 offset-3">
+    <form action="/parks" class="needs-validation" method="POST" enctype="multipart/form-data" novalidate>
+        <div class="mb-3">
+        <label class="form-label" for="title">Park Name</label>
+        <input class="form-control" type="text" name="park[title]" id="title" required>
+        <div class="invalid-feedback">Enter park name</div>
+        </div>
+        <div class="mb-3">
+        <label class="form-label" for="location">Location</label>
+        <input class="form-control" type="text" name="park[location]" id="location" required>
+        <div class="invalid-feedback">Enter park location</div>
+        </div>
+        <!-- <div class="mb-3">
+            <input type="file" name="image" id="" multiple>
+        </div> -->
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload Image(s)</label>
+            <input class="form-control" type="file" id="image" name="image" multiple>
+        </div>
+        <label class="form-label" for="price">Entry Price</label>
+        <div class="input-group mb-3">
+        <span class="input-group-text">₹</span>
+        <input class="form-control" type="text" name="park[price]" id="price" aria-label="Entry Price" required>
+        <div class="invalid-feedback">Enter entry fee</div>
+        </div>
+        <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea class="form-control" type="text" name="park[description]" id="description" required></textarea>
+        <div class="invalid-feedback">Enter park description</div>
+        </div>
+        <button class="btn btn-success">Submit!</button>
+    </form>
+    <a class="btn btn-primary mt-3" href="/parks">Back to All Parks</a>
+</div>
+</div>

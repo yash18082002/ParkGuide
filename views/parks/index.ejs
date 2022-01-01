@@ -1,0 +1,34 @@
+<% layout('layouts/boilerplate') %>
+    <div id="map" style="width: 100%; height: 400px;"></div>
+    <h1>All Parks</h1>
+    <% for(let park of parks){ %>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<%= park.images[0].url %>" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= park.title %>
+                        </h5>
+                        <p class="card-text">
+                            <%= park.description %>
+                        </p>
+                        <p class="text-muted">
+                            <%= park.location %>
+                        </p>
+
+                        <a href="/parks/<%= park._id %>" class="btn btn-primary">View Park</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+            <a href="/parks/new" class="btn btn-success">Add a new Park</a>
+
+            <script>
+                const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+                const parks = {features: <%- JSON.stringify(parks) %>};
+            </script>
+            <script src="/javascripts/cluster.js"></script>
